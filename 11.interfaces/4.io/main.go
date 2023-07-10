@@ -21,16 +21,27 @@ func NewRealFileHandler() fs.FS {
 
 func main() {
 	realFileHandler := NewRealFileHandler()
-	fileContent, err := readFile(realFileHandler)
+	ioHandler := NewIOHandler(realFileHandler)
+	fileContent, err := ioHandler.readFile("main.go")
 	if err != nil {
 		log.Fatalf("unable to read file: %s", err)
 	}
 	fmt.Println("file content", fileContent)
 }
 
-// Write a unit test for readFile by creating a custom implementation for fs.FS interface.
-func readFile(fileSystem fs.FS) (string, error) {
-	f, err := fileSystem.Open("main.go")
+type ioHandler struct {
+	fs fs.FS
+}
+
+func NewIOHandler(fs fs.FS) ioHandler {
+	return ioHandler{
+		fs: fs,
+	}
+}
+
+// Write a unit test for readFile by creating a custom implementation for fs.FS interface in ioHandler.
+func (i ioHandler) readFile(fileName string) (string, error) {
+	f, err := i.fs.Open(fileName)
 	if err != nil {
 		return "", err
 	}
