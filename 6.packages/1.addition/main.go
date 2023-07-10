@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/wimspaargaren/go-training-exercises/2.packages/1.addition/calculator"
+	"github.com/wimspaargaren/go-training-exercises/6.packages/1.addition/calculator"
 )
 
 func main() {
