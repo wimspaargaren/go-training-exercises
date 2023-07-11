@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TesGetCalculationFunction(t *testing.T) {
+func TestGetCalculationFunction(t *testing.T) {
 	tests := []struct {
 		Name   string
 		Input  CalcType
