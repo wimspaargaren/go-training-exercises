@@ -13,8 +13,7 @@ func TestReverse(t *testing.T) {
 		Output []int
 	}{
 		{
-			Name:   "empty array",
-			Output: []int{},
+			Name: "empty array",
 		},
 		{
 			Name:   "single elem",
