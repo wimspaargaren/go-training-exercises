@@ -9,7 +9,3 @@ func main() {
 	// and setting it's value V to 42
 	// run the test to verify your result
 }
-
-func itsAlways42(x *X) {
-	x.V = 42
-}
