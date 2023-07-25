@@ -13,6 +13,7 @@ func main() {
 	ctx := context.Background()
 	// Use a context with timeout to wait not longer than 5 seconds until the result is returned
 	// otherwise log an error message that the operation timed out.
+	// Hint: Use a select statement.
 	resChan := make(chan (int))
 
 	go flakyWork(ctx, resChan)
