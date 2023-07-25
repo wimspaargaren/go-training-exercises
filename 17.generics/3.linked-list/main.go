@@ -17,7 +17,7 @@ func main() {
 		next = next.SetNext(NewNode(i))
 	}
 
-	for n := root; n.Next() != nil; n = root.Next() {
+	for n := root; n.Next() != nil; n = n.Next() {
 		fmt.Println("Val", n.Value())
 	}
 }
