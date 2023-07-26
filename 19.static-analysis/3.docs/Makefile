@@ -12,4 +12,5 @@ $(GOBIN)/gofumpt:
 	@go mod tidy
 
 gofumpt: | $(GOBIN)/gofumpt
-	@gofumpt -w ./...
+	@gofumpt -w .
+	@gofumpt -w ./mypkg
