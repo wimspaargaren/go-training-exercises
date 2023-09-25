@@ -10,7 +10,8 @@ func main() {
 	// Refactor the following code, such that we can call the getTheDocs function
 	// without making an actual http request. Hint: can we define an interface for
 	// the behaviour of the httpClient and pass it to the function instead of the http client struct?
-	// Write a unit test for the getTheDocs function.
+	// Write a unit test for the getTheDocs function, where we implement the interface with a
+	// struct that doesn't actually makes an http call.
 	httpClient := http.DefaultClient
 	goDocsRespBody := getTheDocs(httpClient)
 	fmt.Println(goDocsRespBody)
