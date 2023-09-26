@@ -11,7 +11,7 @@ func main() {
 	_ = errorList
 	// Create a custom error type that combines the slice of errors
 	// to a single error.
-	// Once you're done, checkout the newly errors.Join function added in Go 1.20!
+	// Once you're done, checkout the newly added errors.Join function added in Go 1.20!
 }
 
 func errorList() []error {
