@@ -1,9 +1,5 @@
 package main
 
-type X struct {
-	V int
-}
-
 func main() {
 	// Create a function called incrSlice taking a slice of pointers to an integer.
 	// The function has no return argument and should increment every integer in the list by 1.
