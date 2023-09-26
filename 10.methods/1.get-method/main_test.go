@@ -8,40 +8,40 @@ import (
 
 func TestArea(t *testing.T) {
 	tests := []struct {
-		Name     string
-		Triangle triangle
-		Expected float64
+		name     string
+		triangle triangle
+		expected float64
 	}{
 		{
-			Name: "Base 12 Height 6",
-			Triangle: triangle{
+			name: "Base 12 Height 6",
+			triangle: triangle{
 				base:   12,
 				height: 6,
 			},
-			Expected: 36,
+			expected: 36,
 		},
 		{
-			Name: "Base 15 Height 8",
-			Triangle: triangle{
+			name: "Base 15 Height 8",
+			triangle: triangle{
 				base:   15,
 				height: 8,
 			},
-			Expected: 60,
+			expected: 60,
 		},
 		{
-			Name: "0 values",
-			Triangle: triangle{
+			name: "0 values",
+			triangle: triangle{
 				base:   0,
 				height: 0,
 			},
-			Expected: 0,
+			expected: 0,
 		},
 	}
 
 	for _, test := range tests {
-		t.Run(test.Name, func(t *testing.T) {
-			actual := test.Triangle.Area()
-			assert.Equal(t, test.Expected, actual)
+		t.Run(test.name, func(t *testing.T) {
+			actual := test.triangle.Area()
+			assert.Equal(t, test.expected, actual)
 		})
 	}
 }
