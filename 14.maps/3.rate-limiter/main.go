@@ -20,12 +20,12 @@ func NewRateLimiter() RateLimiter {
 
 func main() {
 	rateLimiter := NewRateLimiter()
-
 	userID := uuid.New()
-	for i := 0; i < 3; i++ {
+
+	fmt.Println("is user rate limited", rateLimiter.ShouldLimit(userID))
+	for i := 0; i < 10; i++ {
 		rateLimiter.ShouldLimit(userID)
 	}
 
-	fmt.Println("is user rate limited", rateLimiter.ShouldLimit(userID))
 	fmt.Println("is user rate limited", rateLimiter.ShouldLimit(userID))
 }
