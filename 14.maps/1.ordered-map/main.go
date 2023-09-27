@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // Implement the following map interface
-type OrderderMap interface {
+type OrderedMap interface {
 	// Add adds a key value pair to the map
 	Add(key string, value string)
 	// GetValuesOrdered returns the values of the ordered map in the same order as they were inserted.
@@ -11,13 +11,13 @@ type OrderderMap interface {
 	GetValuesOrdered() []string
 }
 
-func GetOrderdMap() OrderderMap {
+func GetOrderedMap() OrderedMap {
 	// FIXME: Implement; Run the tests to verify your solution.
 	return nil
 }
 
 func main() {
-	orderedMap := GetOrderdMap()
+	orderedMap := GetOrderedMap()
 	orderedMap.Add("k1", "v1")
 	orderedMap.Add("k2", "v2")
 	orderedMap.Add("k3", "v3")

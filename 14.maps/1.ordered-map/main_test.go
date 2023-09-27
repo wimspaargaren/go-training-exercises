@@ -35,7 +35,7 @@ func TestUnique(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
-			orderedMap := GetOrderdMap()
+			orderedMap := GetOrderedMap()
 			for i, v := range test.Input {
 				orderedMap.Add(v, fmt.Sprintf("%d", i+1))
 			}
