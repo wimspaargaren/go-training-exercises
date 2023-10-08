@@ -23,6 +23,18 @@ type httpClient struct {
 
 type OptFunc func(*options)
 
+func WithEnableSSLOption() OptFunc {
+	return func(o *options) {
+		o.sslEnforced = true
+	}
+}
+
+func WithDurationOption(d time.Duration) OptFunc {
+	return func(o *options) {
+		o.requestTimout = d
+	}
+}
+
 func NewHTTPClient(opts ...OptFunc) httpClient {
 	defaultOpts := defaultOptions()
 	for _, f := range opts {
@@ -39,4 +51,17 @@ func main() {
 	// and enforceSSL options. Afterwards call the NewHTTPClient with your
 	// OptFuncs.
 	fmt.Println(NewHTTPClient().options)
+	NewHTTPClient(
+		WithEnableSSLOption(),
+		WithDurationOption(time.Second*5),
+	)
+
+	NewHTTPClient(func(*options) {})
+	NewHTTPClient(func(*options) {}, func(o *options) {})
+	optsFuncList := []OptFunc{
+		func(o *options) {
+		},
+	}
+	NewHTTPClient(optsFuncList...)
+
 }
