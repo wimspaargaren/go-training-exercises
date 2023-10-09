@@ -4,11 +4,8 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	"sync"
 	"time"
 )
-
-var wg sync.WaitGroup
 
 func main() {
 	result, err := timeIsMoney()
