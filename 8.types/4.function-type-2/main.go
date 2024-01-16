@@ -14,3 +14,9 @@ func main() {
 	_, _ = 42, 42
 	// Execute the test to verify your solution
 }
+
+func GetCalculationFunction(calcType CalcType) Calc {
+	// Implement the GetCalculationFunction
+	// Hint: Use a switch statement to return the correct function
+	return nil
+}
