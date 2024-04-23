@@ -4,7 +4,7 @@ type CalcType int
 
 const (
 	// Add a type for Subtract and Multiplication
-	CalcTypeSum CalcType = iota
+	CalcTypeSum CalcType = iota // iota: https://go.dev/wiki/Iota
 )
 
 type Calc func(x, y int) int
