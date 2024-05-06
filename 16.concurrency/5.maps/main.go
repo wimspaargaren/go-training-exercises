@@ -35,7 +35,6 @@ func NewConcurrentMap() ConcurrentMap {
 }
 
 type concurrentMap struct {
-	sync.Mutex
 	m map[int]int
 }
 
