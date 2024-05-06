@@ -13,7 +13,7 @@ func main() {
 	// Maps do not support concurrent writes. Implement the ConcurrentMap type
 	// such that we can concurrently assign values to our map.
 	// Hint: use mutual exclusion (sync.Mutex). Also check out what happens if you run the code as is.
-	m := NewNonConcurrentMap()
+	m := NewConcurrentMap()
 	wg := &sync.WaitGroup{}
 
 	for i := 0; i < 100; i++ {
@@ -29,15 +29,16 @@ func main() {
 	fmt.Println("map", m)
 }
 
-// NewNonConcurrentMap returns a new ConcurrentMap which is not safe for concurrent use.
-func NewNonConcurrentMap() ConcurrentMap {
-	return &nonConcurrentMap{m: map[int]int{}}
+// NewConcurrentMap returns a new ConcurrentMap which is not safe for concurrent use.
+func NewConcurrentMap() ConcurrentMap {
+	return &concurrentMap{m: map[int]int{}}
 }
 
-type nonConcurrentMap struct {
+type concurrentMap struct {
+	sync.Mutex
 	m map[int]int
 }
 
-func (m *nonConcurrentMap) Add(k, v int) {
+func (m *concurrentMap) Add(k, v int) {
 	m.m[k] = v
 }
