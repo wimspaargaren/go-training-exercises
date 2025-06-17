@@ -6,3 +6,7 @@ func main() {
 	// value to the first one.
 	// Run the test to verify your solution
 }
+
+func addPointer(x *int, y int) {
+	// Your code here
+}
