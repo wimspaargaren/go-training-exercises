@@ -14,7 +14,7 @@ import (
 func TestCreateInfoRun(t *testing.T) {
 	dataStore := NewMockDataStore(t)
 
-	dataStore.On("Store", &Info{X: 42, Y: 42}).Return(nil)
+	dataStore.EXPECT().Store(&Info{X: 42, Y: 42}).Return(nil)
 	infoHandler := NewInfoHandler(dataStore)
 	result, err := infoHandler.CreateNewInfo(42, 42)
 	assert.NoError(t, err)
