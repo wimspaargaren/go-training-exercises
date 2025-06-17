@@ -1,0 +1,21 @@
+all: false
+dir: '{{.InterfaceDir}}'
+filename: mocks_test.go
+force-file-write: true
+formatter: goimports
+log-level: info
+structname: '{{.Mock}}{{.InterfaceName}}'
+pkgname: '{{.SrcPackageName}}'
+recursive: false
+require-template-schema-exists: true
+template: testify
+template-schema: '{{.Template}}.schema.json'
+packages:
+  github.com/wimspaargaren/go-training-exercises/13.mocking/1.my-first-mock:
+    interfaces:
+      DataStore:
+        configs:
+          - dir: .
+            pkgname: repository
+            template-data:
+              unroll-variadic: false
