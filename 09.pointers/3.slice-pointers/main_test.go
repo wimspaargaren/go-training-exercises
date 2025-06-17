@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestIncrSlice(t *testing.T) {
+func TestGrowSlice(t *testing.T) {
 	tests := []struct {
 		Name   string
 		Input  *[]int
