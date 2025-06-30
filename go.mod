@@ -4,7 +4,6 @@ go 1.24
 
 require (
 	github.com/google/uuid v1.3.0
-	github.com/gorilla/mux v1.8.0
 	github.com/stretchr/testify v1.8.2
 	golang.org/x/exp v0.0.0-20230711153332-06a737ee72cb
 )

@@ -1,19 +1,48 @@
 package main
 
 import (
+	"context"
+	"errors"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/google/uuid"
-	"github.com/gorilla/mux"
 )
 
 func main() {
-	router := mux.NewRouter()
-	router.Use(authorizationMiddleware)
-	router.HandleFunc("/user", handleUser).Methods(http.MethodGet)
-	log.Fatal(http.ListenAndServe(":9000", router))
+	mux := http.NewServeMux()
+
+	mux.Handle("/user", authorizationMiddleware(http.HandlerFunc(handleUser)))
+
+	server := &http.Server{
+		Handler: mux,
+		Addr:    ":9000",
+	}
+	go func() {
+		log.Println("Starting server on :9000")
+		err := server.ListenAndServe()
+		if errors.Is(err, http.ErrServerClosed) {
+			log.Println("Server closed")
+		} else if err != nil {
+			log.Fatalf("Could not start server: %v", err)
+		}
+	}()
+	sigs := make(chan os.Signal, 1)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
+	<-sigs
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	err := server.Shutdown(ctx)
+	if err != nil {
+		log.Fatalf("Server Shutdown Failed:%+v", err)
+	}
+	log.Println("Server gracefully stopped")
 }
 
 func handleUser(w http.ResponseWriter, r *http.Request) {
