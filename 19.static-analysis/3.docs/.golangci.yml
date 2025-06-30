@@ -1,6 +1,4 @@
-issues:
-  exclude-use-default: false
-
+version: "2"
 linters:
   enable:
     - asasalint
@@ -15,16 +13,14 @@ linters:
     - dupl
     - dupword
     - durationcheck
-    - errcheck
+    - err113
     - errchkjson
     - errname
     - errorlint
     - exhaustive
     - exhaustruct
-    - exportloopref
     - forcetypeassert
     - funlen
-    - gci
     - ginkgolinter
     - gocheckcompilerdirectives
     - gochecknoglobals
@@ -35,22 +31,14 @@ linters:
     - gocyclo
     - godot
     - godox
-    - err113
-    - gofmt
-    - gofumpt
     - goheader
-    - goimports
-    - mnd
     - gomoddirectives
     - gomodguard
     - goprintffuncname
     - gosec
-    - gosimple
     - gosmopolitan
-    - govet
     - grouper
     - importas
-    - ineffassign
     - interfacebloat
     - ireturn
     - lll
@@ -59,6 +47,7 @@ linters:
     - makezero
     - mirror
     - misspell
+    - mnd
     - musttag
     - nakedret
     - nestif
@@ -78,23 +67,49 @@ linters:
     - rowserrcheck
     - sqlclosecheck
     - staticcheck
-    - stylecheck
     - tagalign
     - tagliatelle
-    - tenv
     - testableexamples
     - testpackage
     - thelper
     - tparallel
-    - typecheck
     - unconvert
     - unparam
-    - unused
     - usestdlibvars
     - varnamelen
     - wastedassign
     - whitespace
     - wrapcheck
     - zerologlint
-
-  exclude-use-default: false
+  settings:
+    lll:
+      line-length: 120
+      tab-width: 2
+    revive:
+      enable-all-rules: true
+      rules:
+        - name: line-length-limit
+          disabled: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
