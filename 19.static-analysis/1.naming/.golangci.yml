@@ -81,17 +81,15 @@ linters:
     - whitespace
     - wrapcheck
     - zerologlint
-  exclusions:
-    generated: lax
-    presets:
-      - comments
-      - common-false-positives
-      - legacy
-      - std-error-handling
-    paths:
-      - third_party$
-      - builtin$
-      - examples$
+  settings:
+    lll:
+      line-length: 120
+      tab-width: 2
+    revive:
+      enable-all-rules: true
+      rules:
+        - name: line-length-limit
+          disabled: true
 formatters:
   enable:
     - gci
