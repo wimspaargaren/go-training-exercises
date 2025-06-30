@@ -1,7 +1,7 @@
 .PHONY: lint
 
 $(GOBIN)/golangci-lint:
-	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.58.0
+	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.2.1
 
 lint: | $(GOBIN)/golangci-lint
 	@golangci-lint  -v --concurrency=3 --config=.golangci.yml --issues-exit-code=1 run
