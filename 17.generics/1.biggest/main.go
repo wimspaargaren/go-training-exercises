@@ -1,9 +1,8 @@
 package main
 
 import (
+	"cmp"
 	"fmt"
-
-	"golang.org/x/exp/constraints"
 )
 
 func main() {
@@ -13,6 +12,6 @@ func main() {
 }
 
 // Implement the generic Max function, which returns the largest input value.
-func Max[T constraints.Ordered](x, y T) T {
+func Max[T cmp.Ordered](x, y T) T {
 	return x
 }
