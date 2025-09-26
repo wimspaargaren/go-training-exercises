@@ -18,8 +18,8 @@ func main() {
 // Implement the timeIsMoney function. The function performs some asynchronous
 // processing. Once it's done it will put the result on the channel. If the processing
 // takes longer than 3 seconds, the function should return an error. Otherwise, the function
-// should return the value
-func timeIsMoney() (int, error) {
+// should return the value.
+func timeIsMoney() (int, error) { //nolint:unparam
 	ch := make(chan int, 1)
 
 	go func() {

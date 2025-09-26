@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// Try starting the program and execute an HTTP request using curl: curl localhost:3000/home
+// Try starting the program and execute an HTTP request using curl: curl localhost:3000/home.
 func main() {
 	fmt.Println("Start HTTP server")
 
@@ -23,6 +23,12 @@ func main() {
 // looks as follows: func(http.ResponseWriter, *http.Request)
 
 func homepageHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello from server")
-	fmt.Fprintln(w, "I am learning about closures")
+	_, err := fmt.Fprintln(w, "Hello from server")
+	if err != nil {
+		log.Println("Could not write to response writer")
+	}
+	_, err = fmt.Fprintln(w, "I am learning about closures")
+	if err != nil {
+		log.Println("Could not write to response writer")
+	}
 }

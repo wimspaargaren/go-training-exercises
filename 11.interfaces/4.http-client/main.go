@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
@@ -18,7 +19,7 @@ func main() {
 }
 
 func getTheDocs(client *http.Client) string {
-	req, err := http.NewRequest(http.MethodGet, "https://go.dev/doc/", nil)
+	req, err := http.NewRequestWithContext(context.Background(), http.MethodGet, "https://go.dev/doc/", nil)
 	if err != nil {
 		// we did not learn about errors yet, so ignore for now
 		return err.Error()
@@ -28,6 +29,9 @@ func getTheDocs(client *http.Client) string {
 		// we did not learn about errors yet, so ignore for now
 		return err.Error()
 	}
+	defer func() {
+		_ = resp.Body.Close()
+	}()
 	b, err := io.ReadAll(resp.Body)
 	if err != nil {
 		// we did not learn about errors yet, so ignore for now

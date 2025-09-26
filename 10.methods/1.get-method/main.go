@@ -1,5 +1,6 @@
 package main
 
+//nolint:unused
 type triangle struct {
 	base, height float64
 }

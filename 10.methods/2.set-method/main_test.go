@@ -3,6 +3,7 @@ package main
 // func TestAdd(t *testing.T) {
 // 	tests := []struct {
 // 		name     string
+//nolint:dupword
 // 		counter  counter
 // 		addition int
 // 		expected int

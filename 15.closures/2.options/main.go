@@ -31,7 +31,6 @@ func NewHTTPClient(opts ...OptFunc) httpClient {
 	return httpClient{
 		options: defaultOpts,
 	}
-
 }
 
 func main() {

@@ -11,6 +11,6 @@ func main() {
 	// Pass the error to the function below.
 }
 
-func logMyError(err error) {
+func logMyError(err error) { //nolint:unused
 	log.Fatalf("the program exited with an error: %s", err)
 }

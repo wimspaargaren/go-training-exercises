@@ -16,7 +16,7 @@ package main
 // 			Output: []int{-1},
 // 		},
 // 		{
-// 			Name:   "postive numbers",
+// 			Name:   "positive numbers",
 // 			Input:  []int{1, 2, 3, 4},
 // 			Output: []int{1, 2, 3, 4},
 // 		},

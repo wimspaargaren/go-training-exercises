@@ -13,7 +13,8 @@ import (
 func NewMockDataStore(t interface {
 	mock.TestingT
 	Cleanup(func())
-}) *MockDataStore {
+},
+) *MockDataStore {
 	mock := &MockDataStore{}
 	mock.Mock.Test(t)
 

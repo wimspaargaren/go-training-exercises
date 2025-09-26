@@ -1,5 +1,6 @@
 package main
 
+//nolint:unused
 type train struct {
 	name       string
 	velocity   float64
@@ -12,5 +13,4 @@ func main() {
 	// Add some nice formatting to represent the name, speed and amount of passengers
 	// and see what happens when we pass the struct to fmt.Println.
 	// Bonus: Define a method GoString() string and pass it to fmt.Printf with the %#v verb.
-
 }

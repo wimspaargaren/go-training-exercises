@@ -16,7 +16,7 @@ import (
 // but uses a context which ensures we use a maximum of 5 seconds to wait for an answer.
 // You can either bootstrap the client from the same main.go in a go routine, or create a
 // sub folder with a new main.go
-// Hint: use http.NewRequestWithContext
+// Hint: use http.NewRequestWithContext.
 func main() {
 	mux := http.NewServeMux()
 	mux.Handle("/flaky-endpoint", http.HandlerFunc(flakyHandler))
@@ -42,7 +42,8 @@ func main() {
 	defer cancel()
 	err := server.Shutdown(ctx)
 	if err != nil {
-		log.Fatalf("Server Shutdown Failed:%+v", err)
+		log.Printf("Server Shutdown Failed:%+v\n", err)
+		return
 	}
 	log.Println("Server gracefully stopped")
 }
@@ -52,5 +53,8 @@ func flakyHandler(w http.ResponseWriter, r *http.Request) {
 	time.Sleep(time.Duration(rand.Intn(10) * int(time.Second)))
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Hello from Flaky endpoint!"))
+	_, err := w.Write([]byte("Hello from Flaky endpoint!"))
+	if err != nil {
+		log.Println("Could not write to response writer", err)
+	}
 }

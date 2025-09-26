@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Implement a generic stack where we can push and pop elements of type T
+// Implement a generic stack where we can push and pop elements of type T.
 type Stack[T any] interface {
 	Push(v T)
 	Pop() T
@@ -16,7 +16,6 @@ func main() {
 	stringStack := NewStringStack()
 	stringStack.Push("42")
 	fmt.Println(stringStack.Pop())
-
 }
 
 func NewIntStack() Stack[int] {

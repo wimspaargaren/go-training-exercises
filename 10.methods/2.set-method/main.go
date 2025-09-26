@@ -1,5 +1,6 @@
 package main
 
+//nolint:unused
 type counter struct {
 	val int
 }

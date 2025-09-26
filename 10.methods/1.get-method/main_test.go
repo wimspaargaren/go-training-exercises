@@ -3,6 +3,7 @@ package main
 // func TestArea(t *testing.T) {
 // 	tests := []struct {
 // 		name     string
+//nolint:dupword
 // 		triangle triangle
 // 		expected float64
 // 	}{

@@ -8,8 +8,7 @@ import (
 	"os"
 )
 
-type realFileHandler struct {
-}
+type realFileHandler struct{}
 
 func (r realFileHandler) Open(name string) (fs.File, error) {
 	return os.Open(name)

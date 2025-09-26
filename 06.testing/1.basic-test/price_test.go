@@ -7,5 +7,4 @@ func TestCalculateTotalCost(t *testing.T) {
 	// You can execute these tests using "go test".
 	// Try passing -v and -cover arguments to go test.
 	_ = CalculateTotalPrice(42, 42, 42)
-
 }

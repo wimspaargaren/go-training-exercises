@@ -13,7 +13,8 @@ func TestUnique(t *testing.T) {
 		Output map[string]int
 	}{
 		{
-			Name:  "empty array",
+			Name: "empty array",
+			//nolint:dupword
 			Input: "foo foo bar foo bar bar foo",
 			Output: map[string]int{
 				"foo": 4,
@@ -25,9 +26,7 @@ func TestUnique(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
 			wordCountMap := CountWords(test.Input)
-
 			assert.Equal(t, test.Output, wordCountMap)
-
 		})
 	}
 }

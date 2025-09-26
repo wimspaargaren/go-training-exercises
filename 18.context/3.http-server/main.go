@@ -40,7 +40,8 @@ func main() {
 	defer cancel()
 	err := server.Shutdown(ctx)
 	if err != nil {
-		log.Fatalf("Server Shutdown Failed:%+v", err)
+		log.Printf("Server Shutdown Failed:%+v\n", err)
+		return
 	}
 	log.Println("Server gracefully stopped")
 }
@@ -49,13 +50,19 @@ func handleUser(w http.ResponseWriter, r *http.Request) {
 	userID := r.Context().Value("uuid")
 	if userID == nil {
 		w.WriteHeader(http.StatusUnauthorized)
-		w.Write([]byte("Who are you?"))
+		_, err := w.Write([]byte("Who are you?"))
+		if err != nil {
+			log.Println("Could not write to response writer", err)
+		}
 		return
 	}
 
 	w.WriteHeader(http.StatusOK)
 	log.Printf("[%v] Returning 200 - ", userID)
-	w.Write([]byte(fmt.Sprintf("You are user: %s", userID)))
+	_, err := fmt.Fprintf(w, "You are user: %s", userID)
+	if err != nil {
+		log.Println("Could not write to response writer", err)
+	}
 }
 
 func authorizationMiddleware(next http.Handler) http.Handler {

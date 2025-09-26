@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Define USD as a new type based on float64
+// Define USD as a new type based on float64.
 type USD float64
 
 // Implement the String() method for the USD type.

@@ -3,6 +3,6 @@ package example
 
 import "fmt"
 
-func main() {
+func main() { //nolint:unused
 	fmt.Println("Hello Go Training!")
 }
