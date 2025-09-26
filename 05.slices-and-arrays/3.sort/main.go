@@ -6,5 +6,5 @@ func main() {
 
 	// Bonus: try the same exercise with the "slices" package
 
-	// run the test to verify your answer (go test)
+	// run the test to verify your answer (go test). Ensure to uncomment the test case.
 }

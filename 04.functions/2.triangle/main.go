@@ -18,5 +18,6 @@ func main() {
 	* * * * * * * * *
 	```
 	*/
-	printTriangle(10)
+	// uncomment the next line.
+	// printTriangle(10)
 }
