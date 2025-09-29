@@ -9,4 +9,5 @@ func main() {
 	// - A function
 	// - The function itself
 	// - A string
+	// Recall that there is a verb which prints the type of a variable in a formatted string.
 }
