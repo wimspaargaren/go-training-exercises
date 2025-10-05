@@ -1,0 +1,67 @@
+package postgres
+
+import (
+	"errors"
+	"fmt"
+	"log"
+	"testing"
+	"time"
+
+	"github.com/jackc/pgx/v5/pgconn"
+	"github.com/ory/dockertest"
+	"github.com/stretchr/testify/suite"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+)
+
+func TestPostgresTestSuite(t *testing.T) {
+	suite.Run(t, new(PostgresTestSuite))
+}
+
+type PostgresTestSuite struct {
+	suite.Suite
+	pool     *dockertest.Pool
+	resource *dockertest.Resource
+}
+
+func (s *PostgresTestSuite) SetupSuite() {
+	var err error
+	s.pool, err = dockertest.NewPool("")
+	if err != nil {
+		log.Fatalf("Could not construct pool: %s", err)
+	}
+
+	err = s.pool.Client.Ping()
+	if err != nil {
+		log.Fatalf("Could not connect to Docker: %s", err)
+	}
+
+	s.resource, err = s.pool.Run("postgres", "18.0", []string{"POSTGRES_PASSWORD=postgres", "POSTGRES_DB=todo_db", "POSTGRES_USER=postgres"})
+	if err != nil {
+		log.Fatalf("Could not construct pool: %s", err)
+	}
+
+	dsn := "host=localhost port=" + s.resource.GetPort("5432/tcp") + " user=postgres dbname=todo_db password=postgres sslmode=disable"
+	for i := 0; i < 10; i++ {
+		fmt.Printf("Try to connect to db: %s\n", dsn)
+		_, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+			TranslateError: true,
+		})
+		var connErr *pgconn.ConnectError
+		if ok := errors.As(err, &connErr); ok {
+			fmt.Printf("Connection error: %s docker container might be still starting\n", connErr)
+			time.Sleep(time.Second)
+			continue
+		}
+		if err == nil {
+			break
+		}
+		s.T().Fatal("unexpected error during connection to the database:", err)
+	}
+}
+
+func (s *PostgresTestSuite) TearDownSuite() {
+	if err := s.pool.Purge(s.resource); err != nil {
+		log.Fatalf("Could not purge resource: %s", err)
+	}
+}
