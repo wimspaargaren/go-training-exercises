@@ -80,7 +80,6 @@ linters:
       keywords:
         - HACK
         - OPTIMIZE
-        - TODO
         - BUG
     lll:
       line-length: 200

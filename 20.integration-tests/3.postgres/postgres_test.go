@@ -20,26 +20,21 @@ func TestPostgresTestSuite(t *testing.T) {
 
 type PostgresTestSuite struct {
 	suite.Suite
-	pool     *dockertest.Pool
-	resource *dockertest.Resource
+	pool           *dockertest.Pool
+	resource       *dockertest.Resource
+	todoRepository *TodoRepository
 }
 
 func (s *PostgresTestSuite) SetupSuite() {
 	var err error
 	s.pool, err = dockertest.NewPool("")
-	if err != nil {
-		log.Fatalf("Could not construct pool: %s", err)
-	}
+	s.Require().NoError(err)
 
 	err = s.pool.Client.Ping()
-	if err != nil {
-		log.Fatalf("Could not connect to Docker: %s", err)
-	}
+	s.Require().NoError(err)
 
 	s.resource, err = s.pool.Run("postgres", "18.0", []string{"POSTGRES_PASSWORD=postgres", "POSTGRES_DB=todo_db", "POSTGRES_USER=postgres"})
-	if err != nil {
-		log.Fatalf("Could not construct pool: %s", err)
-	}
+	s.Require().NoError(err)
 
 	dsn := "host=localhost port=" + s.resource.GetPort("5432/tcp") + " user=postgres dbname=todo_db password=postgres sslmode=disable"
 	for i := 0; i < 10; i++ {
@@ -58,6 +53,13 @@ func (s *PostgresTestSuite) SetupSuite() {
 		}
 		s.T().Fatal("unexpected error during connection to the database:", err)
 	}
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		TranslateError: true,
+	})
+	s.Require().NoError(err)
+	s.todoRepository = NewTodoRepository(db)
+	err = db.AutoMigrate(&Todo{})
+	s.Require().NoError(err)
 }
 
 func (s *PostgresTestSuite) TearDownSuite() {
