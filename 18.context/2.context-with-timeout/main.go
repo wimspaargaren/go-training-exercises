@@ -7,8 +7,6 @@ import (
 	"time"
 )
 
-// Define a context value key type
-
 func main() {
 	ctx := context.Background()
 	// Use a context with timeout to wait not longer than 5 seconds until the result is returned
