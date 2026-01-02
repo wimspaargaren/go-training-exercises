@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-// Define USD as a new type based on float64.
+// USD Define USD as a new type based on float64.
 type USD float64
 
-// Implement the String() method for the USD type.
+// String Implement the String() method for the USD type.
 // It should have a value receiver `(m USD)`.
 // It should return a string.
 // Hint: Use fmt.Sprintf() to format the string.

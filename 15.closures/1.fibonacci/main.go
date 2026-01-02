@@ -9,7 +9,7 @@ func fib() func() int {
 
 func main() {
 	f := fib()
-	for i := 0; i < 10; i++ {
+	for range 10 {
 		fmt.Println(f())
 	}
 }

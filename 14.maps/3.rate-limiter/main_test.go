@@ -12,7 +12,7 @@ func TestRateLimiter_ShouldLimit(t *testing.T) {
 
 	// Test case 1: Limit not reached
 	id1 := uuid.New()
-	for i := 0; i < 5; i++ {
+	for range 5 {
 		assert.False(t, rl.ShouldLimit(id1))
 	}
 
@@ -21,7 +21,7 @@ func TestRateLimiter_ShouldLimit(t *testing.T) {
 
 	// Test case 3: Limit not reached for different IDs
 	id2 := uuid.New()
-	for i := 0; i < 5; i++ {
+	for range 5 {
 		assert.False(t, rl.ShouldLimit(id2))
 	}
 

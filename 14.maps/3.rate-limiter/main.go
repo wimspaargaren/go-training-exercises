@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
-// Implement the following RateLimiter interface.
+// RateLimiter Implement the following RateLimiter interface.
 type RateLimiter interface {
 	// ShouldLimit function takes an id and returns if the given id should be
 	// rate limited or not. To keep it simple, we'll just return true as soon
@@ -23,7 +23,7 @@ func main() {
 	userID := uuid.New()
 
 	fmt.Println("is user rate limited", rateLimiter.ShouldLimit(userID))
-	for i := 0; i < 10; i++ {
+	for range 10 {
 		rateLimiter.ShouldLimit(userID)
 	}
 

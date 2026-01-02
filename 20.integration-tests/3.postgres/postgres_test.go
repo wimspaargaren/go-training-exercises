@@ -37,7 +37,7 @@ func (s *PostgresTestSuite) SetupSuite() {
 	s.Require().NoError(err)
 
 	dsn := "host=localhost port=" + s.resource.GetPort("5432/tcp") + " user=postgres dbname=todo_db password=postgres sslmode=disable"
-	for i := 0; i < 10; i++ {
+	for range 10 {
 		fmt.Printf("Try to connect to db: %s\n", dsn)
 		_, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 			TranslateError: true,

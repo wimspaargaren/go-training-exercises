@@ -33,7 +33,7 @@ func TestPostgresDB(t *testing.T) {
 	}()
 
 	dsn := "host=localhost port=" + resource.GetPort("5432/tcp") + " user=postgres dbname=todo_db password=postgres sslmode=disable"
-	for i := 0; i < 10; i++ {
+	for range 10 {
 		fmt.Printf("Try to connect to db: %s\n", dsn)
 		var err error
 		// use the gorm library to open a connection to the database

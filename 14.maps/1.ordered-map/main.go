@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Implement the following map interface.
+// OrderedMap Implement the following map interface.
 type OrderedMap interface {
 	// Add adds a key value pair to the map
 	Add(key string, value string)

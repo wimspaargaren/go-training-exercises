@@ -9,7 +9,7 @@ import (
 func main() {
 	start := time.Now()
 	// Speed up the following code using goroutines and a waitgroup.
-	for i := 0; i < 1000; i++ {
+	for range 1000 {
 		longRunningTask()
 	}
 

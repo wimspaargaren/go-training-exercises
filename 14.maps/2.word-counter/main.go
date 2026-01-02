@@ -9,7 +9,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
 deserunt mollit anim id est laborum.`
 
-// Implement the function count words. The function returns a map of words and their count.
+// CountWords Implement the function count words. The function returns a map of words and their count.
 // Hint: splitting by whitespace and newline can be done using: strings.Fields.
 func CountWords(input string) map[string]int {
 	// FIXME: Implement; Run the test to verify your solution.

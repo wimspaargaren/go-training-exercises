@@ -16,7 +16,7 @@ func main() {
 
 func errorList() []error {
 	errors := []error{}
-	for i := 0; i < 10; i++ {
+	for i := range 10 {
 		errors = append(errors, fmt.Errorf("e: %d", i))
 	}
 	return errors

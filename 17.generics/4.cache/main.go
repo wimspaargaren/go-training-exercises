@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// Implement the generic cache interface.
+// Cache Implement the generic cache interface.
 type Cache[T comparable, U any] interface {
 	Set(k T, v U)
 	Get(k T) U

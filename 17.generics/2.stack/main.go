@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Implement a generic stack where we can push and pop elements of type T.
+// Stack Implement a generic stack where we can push and pop elements of type T.
 type Stack[T any] interface {
 	Push(v T)
 	Pop() T
