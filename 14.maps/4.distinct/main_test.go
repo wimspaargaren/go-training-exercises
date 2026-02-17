@@ -29,7 +29,7 @@ func TestUnique(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
-			wordCountMap := UniqueElements(test.Input)
+			wordCountMap := DistinctElements(test.Input)
 			assert.Equal(t, test.Output, wordCountMap)
 		})
 	}
