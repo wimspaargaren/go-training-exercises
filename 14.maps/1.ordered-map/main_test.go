@@ -18,7 +18,8 @@ func TestUnique(t *testing.T) {
 		Output []string
 	}{
 		{
-			Name: "empty array",
+			Name:   "empty array",
+			Output: []string{},
 		},
 		{
 			Name: "No duplicate entries",
