@@ -42,8 +42,7 @@ func (s *PostgresTestSuite) SetupSuite() {
 		_, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 			TranslateError: true,
 		})
-		var connErr *pgconn.ConnectError
-		if ok := errors.As(err, &connErr); ok {
+		if connErr, ok := errors.AsType[*pgconn.ConnectError](err); ok {
 			fmt.Printf("Connection error: %s docker container might be still starting\n", connErr)
 			time.Sleep(time.Second)
 			continue

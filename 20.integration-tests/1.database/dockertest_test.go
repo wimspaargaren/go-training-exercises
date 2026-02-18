@@ -38,8 +38,7 @@ func TestPostgresDB(t *testing.T) {
 		var err error
 		// use the gorm library to open a connection to the database
 
-		var connErr *pgconn.ConnectError
-		if ok := errors.As(err, &connErr); ok {
+		if connErr, ok := errors.AsType[*pgconn.ConnectError](err); ok {
 			fmt.Printf("Connection error: %s docker container might be still starting\n", connErr)
 			time.Sleep(time.Second)
 			continue
