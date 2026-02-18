@@ -6,14 +6,14 @@ import (
 )
 
 type options struct {
-	requestTimout time.Duration
-	sslEnforced   bool
+	requestTimeout time.Duration
+	sslEnforced    bool
 }
 
 func defaultOptions() *options {
 	return &options{
-		requestTimout: time.Second * 10,
-		sslEnforced:   true,
+		requestTimeout: time.Second * 10,
+		sslEnforced:    true,
 	}
 }
 
