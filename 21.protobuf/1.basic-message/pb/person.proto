@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package person;
+
+option go_package = "github.com/wimspaargaren/go-training-exercises/21.protobuf/1.basic-message/pb";
+
+// TODO: Define a message called "Person" with the following fields:
+// - name (string, field number 1)
+// - age (int32, field number 2)
+// - email (string, field number 3)

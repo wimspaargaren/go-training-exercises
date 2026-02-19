@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "github.com/wimspaargaren/go-training-exercises/21.protobuf/2.marshal-unmarshal/pb";
+
+message Product {
+  int32 id = 1;
+  string name = 2;
+  double price = 3;
+  bool in_stock = 4;
+}

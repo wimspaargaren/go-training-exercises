@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package addressbook;
+
+option go_package = "github.com/wimspaargaren/go-training-exercises/21.protobuf/3.nested-messages/pb";
+
+enum PhoneType {
+  PHONE_TYPE_UNSPECIFIED = 0;
+  PHONE_TYPE_MOBILE = 1;
+  PHONE_TYPE_HOME = 2;
+  PHONE_TYPE_WORK = 3;
+}
+
+message PhoneNumber {
+  string number = 1;
+  PhoneType type = 2;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+  string zip_code = 4;
+}
+
+message Person {
+  string name = 1;
+  int32 age = 2;
+  string email = 3;
+  repeated PhoneNumber phones = 4;
+  Address address = 5;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
