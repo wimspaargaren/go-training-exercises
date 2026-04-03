@@ -4,7 +4,7 @@ go 1.26
 
 require (
 	github.com/google/uuid v1.6.0
-	github.com/jackc/pgx/v5 v5.8.0
+	github.com/jackc/pgx/v5 v5.9.1
 	github.com/ory/dockertest/v3 v3.12.1-0.20251205091223-d1539a675165
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/protobuf v1.36.11
